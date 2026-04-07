@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdbcb",
+              "surface-dim": "#dadada",
+              "tertiary-container": "#b74e00",
+              "on-primary-container": "#cbffc2",
+              "background": "#f9f9f9",
+              "on-tertiary-fixed": "#341100",
+              "inverse-primary": "#88d982",
+              "outline-variant": "#bfcaba",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#793100",
+              "on-secondary-container": "#003670",
+              "on-secondary-fixed-variant": "#00468c",
+              "tertiary": "#903c00",
+              "secondary-fixed": "#d6e3ff",
+              "surface-container-highest": "#e2e2e2",
+              "surface": "#f9f9f9",
+              "primary-container": "#2e7d32",
+              "secondary-container": "#64a1ff",
+              "surface-variant": "#e2e2e2",
+              "on-error": "#ffffff",
+              "surface-container": "#eeeeee",
+              "secondary": "#005db7",
+              "outline": "#707a6c",
+              "on-tertiary-container": "#ffeee7",
+              "on-background": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#40493d",
+              "on-primary-fixed": "#002204",
+              "primary-fixed": "#a3f69c",
+              "secondary-fixed-dim": "#a9c7ff",
+              "on-secondary-fixed": "#001b3d",
+              "surface-container-low": "#f3f3f3",
+              "inverse-on-surface": "#f0f1f1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              "on-surface": "#1a1c1c",
+              "surface-tint": "#1b6d24",
+              "surface-bright": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "primary": "#0d631b",
+              "tertiary-fixed-dim": "#ffb691",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-fixed-variant": "#005312",
+              "inverse-surface": "#2f3131",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9f9f9;
+        color: #1a1c1c;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-800 dark:text-green-400" style="font-size: 28px;">local_laundry_service</span>
+<span class="text-2xl font-black text-green-900 dark:text-green-50 tracking-tighter">Pristine</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-widest text-[11px] hover:text-green-700 transition-colors" href="#">Home</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-widest text-[11px] hover:text-green-700 transition-colors" href="#">Products</a>
+<a class="text-green-900 dark:text-white font-bold uppercase tracking-widest text-[11px]" href="#">Process</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-widest text-[11px] hover:text-green-700 transition-colors" href="#">Contact</a>
+</div>
+<button aria-label="Search" class="p-2 text-zinc-500 hover:bg-zinc-100 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+</nav>
+<div class="bg-zinc-100 dark:bg-zinc-800 h-[1px] w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-24 text-center md:text-left">
+<h1 class="font-headline font-black text-5xl md:text-7xl text-on-surface tracking-tighter mb-6 leading-tight">
+                Refurbished quality, <br/>
+<span class="text-primary">transparently simple.</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed font-medium">
+                We believe top-tier appliances shouldn't be complicated. Our 4-step process ensures you get a "like new" machine with absolute peace of mind.
+            </p>
+</section>
+<!-- The 4 Steps Process -->
+<section class="mb-32">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col items-start min-h-[320px] transition-transform hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined" style="font-size: 32px;">check_circle</span>
+</div>
+<span class="text-primary font-bold text-sm uppercase tracking-widest mb-2">Step 01</span>
+<h3 class="font-headline font-extrabold text-2xl text-on-surface mb-4 tracking-tight">Choose</h3>
+<p class="text-on-surface-variant leading-relaxed font-body">Browse our curated selection of premium refurbished washers and dryers. All certified by our lead engineers.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col items-start min-h-[320px] transition-transform hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined" style="font-size: 32px;">forum</span>
+</div>
+<span class="text-secondary font-bold text-sm uppercase tracking-widest mb-2">Step 02</span>
+<h3 class="font-headline font-extrabold text-2xl text-on-surface mb-4 tracking-tight">Talk</h3>
+<p class="text-on-surface-variant leading-relaxed font-body">Direct human contact via WhatsApp. Ask for videos, specific measurements, or technical specs before you commit.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col items-start min-h-[320px] transition-transform hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed text-tertiary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined" style="font-size: 32px;">payments</span>
+</div>
+<span class="text-tertiary font-bold text-sm uppercase tracking-widest mb-2">Step 03</span>
+<h3 class="font-headline font-extrabold text-2xl text-on-surface mb-4 tracking-tight">Pay</h3>
+<p class="text-on-surface-variant leading-relaxed font-body">Secure payment via PIX or Credit Card. We use industry-standard encryption to protect your transaction.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] flex flex-col items-start min-h-[320px] transition-transform hover:-translate-y-1">
+<div class="w-16 h-16 rounded-2xl bg-surface-container-highest text-on-surface flex items-center justify-center mb-8">
+<span class="material-symbols-outlined" style="font-size: 32px;">local_shipping</span>
+</div>
+<span class="text-on-surface-variant font-bold text-sm uppercase tracking-widest mb-2">Step 04</span>
+<h3 class="font-headline font-extrabold text-2xl text-on-surface mb-4 tracking-tight">Receive</h3>
+<p class="text-on-surface-variant leading-relaxed font-body">White-glove delivery within 48 hours. Our team installs and tests the machine in your home for complete satisfaction.</p>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mb-32">
+<div class="max-w-3xl mx-auto">
+<div class="flex items-center justify-center gap-4 mb-16">
+<div class="h-px bg-outline-variant flex-grow opacity-30"></div>
+<h2 class="font-headline font-black text-3xl text-on-surface whitespace-nowrap">Frequently Asked Questions</h2>
+<div class="h-px bg-outline-variant flex-grow opacity-30"></div>
+</div>
+<div class="space-y-4">
+<!-- FAQ 1 -->
+<div class="bg-surface-container p-6 rounded-2xl">
+<h4 class="font-bold text-lg text-on-surface mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified</span>
+                            Does it really work like new?
+                        </h4>
+<p class="text-on-surface-variant font-body leading-relaxed pl-9">
+                            Every machine undergoes a rigorous 42-point inspection. We replace all wearing parts (bearings, pumps, belts) with original components before it leaves our facility.
+                        </p>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-surface-container p-6 rounded-2xl">
+<h4 class="font-bold text-lg text-on-surface mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">shield</span>
+                            What kind of warranty do I get?
+                        </h4>
+<p class="text-on-surface-variant font-body leading-relaxed pl-9">
+                            We offer a comprehensive 12-month warranty on all mechanical parts. If anything fails, our mobile technician will be at your door within 24 hours.
+                        </p>
+</div>
+<!-- FAQ 3 -->
+<div class="bg-surface-container p-6 rounded-2xl">
+<h4 class="font-bold text-lg text-on-surface mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">local_shipping</span>
+                            How does shipping and installation work?
+                        </h4>
+<p class="text-on-surface-variant font-body leading-relaxed pl-9">
+                            Delivery is free within the metropolitan area. We don't just drop it off; we level the machine and connect the hoses to ensure everything is leak-free.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-32">
+<div class="relative overflow-hidden bg-primary-container rounded-[3rem] p-12 md:p-20 text-center text-on-primary-container">
+<div class="relative z-10 flex flex-col items-center">
+<h2 class="font-headline font-black text-4xl md:text-5xl mb-6">Still have questions?</h2>
+<p class="text-on-primary-container/80 text-lg mb-10 max-w-xl font-medium">
+                        Our support team is ready to help you find the perfect appliance for your home.
+                    </p>
+<button class="bg-tertiary hover:bg-tertiary-container text-white px-10 h-16 rounded-full flex items-center gap-3 font-bold text-lg transition-all active:scale-95 shadow-xl min-w-[280px] justify-center">
+<span class="material-symbols-outlined">chat_bubble</span>
+                        Chat on Zap!
+                    </button>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe bg-white/90 dark:bg-zinc-900/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] z-50 rounded-t-3xl border-t border-zinc-100 dark:border-zinc-800">
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 py-2 px-1 hover:text-green-700 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 py-2 px-1 hover:text-green-700 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-100 rounded-2xl min-w-[64px] py-2 px-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Process</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 dark:text-zinc-400 py-2 px-1 hover:text-green-700 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-widest mt-1">Contact</span>
+</a>
+</nav>
+<!-- Footer Meta -->
+<footer class="bg-surface-container py-16 px-6 border-t border-zinc-200">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-800" style="font-size: 24px;">local_laundry_service</span>
+<span class="text-xl font-black text-green-900 tracking-tighter">LavaJá</span>
+</div>
+<div class="text-sm text-on-surface-variant font-medium">
+                © 2024 Pristine Utility. All refurbished goods guaranteed.
+            </div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">social_leaderboard</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">photo_camera</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">smart_display</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdbcb",
+              "surface-dim": "#dadada",
+              "tertiary-container": "#b74e00",
+              "on-primary-container": "#cbffc2",
+              "background": "#f9f9f9",
+              "on-tertiary-fixed": "#341100",
+              "inverse-primary": "#88d982",
+              "outline-variant": "#bfcaba",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#793100",
+              "on-secondary-container": "#003670",
+              "on-secondary-fixed-variant": "#00468c",
+              "tertiary": "#903c00",
+              "secondary-fixed": "#d6e3ff",
+              "surface-container-highest": "#e2e2e2",
+              "surface": "#f9f9f9",
+              "primary-container": "#2e7d32",
+              "secondary-container": "#64a1ff",
+              "surface-variant": "#e2e2e2",
+              "on-error": "#ffffff",
+              "surface-container": "#eeeeee",
+              "secondary": "#005db7",
+              "outline": "#707a6c",
+              "on-tertiary-container": "#ffeee7",
+              "on-background": "#1a1c1c",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#40493d",
+              "on-primary-fixed": "#002204",
+              "primary-fixed": "#a3f69c",
+              "secondary-fixed-dim": "#a9c7ff",
+              "on-secondary-fixed": "#001b3d",
+              "surface-container-low": "#f3f3f3",
+              "inverse-on-surface": "#f0f1f1",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              "on-surface": "#1a1c1c",
+              "surface-tint": "#1b6d24",
+              "surface-bright": "#f9f9f9",
+              "on-error-container": "#93000a",
+              "primary": "#0d631b",
+              "tertiary-fixed-dim": "#ffb691",
+              "primary-fixed-dim": "#88d982",
+              "on-primary-fixed-variant": "#005312",
+              "inverse-surface": "#2f3131",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-sm dark:shadow-none h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-800 dark:text-green-400" data-icon="local_laundry_service">local_laundry_service</span>
+<h1 class="text-2xl font-black text-green-900 dark:text-green-50 tracking-tighter">Pristine</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-32">
+<!-- Hero Section: Image Carousel -->
+<section class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<div class="flex h-full overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+<div class="min-w-full h-full snap-center">
+<img alt="Brastemp 11kg" class="w-full h-full object-cover" data-alt="Frontal close-up of a pristine white Brastemp washing machine in a bright modern laundry room with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl3F5ZQoM_vSxgbl3BOSdJXTqjgGBc9ci0O16qHCGjE8FEGRGKp5ukcuLlCXV8_x8KAYFOyW7RF1YR_Lf2XiGHbUVX5ZQ4ctYpuAOV61kcV6eIRJVaiynPi4U3G6_ZshF84uMoJHWxj9aWUWmWGU7jigKypTUdfDICHrHcx_bvoKop80gZkOohIoPHOhhD_8u0mtxvOJQFD7VxKz1nFSD5eio42DGuJO9FMhr4OzhAwJaOzGalmoy0PRlpz2d7kHc1qqb8sm00G9c"/>
+</div>
+<div class="min-w-full h-full snap-center">
+<img alt="Internal Drum" class="w-full h-full object-cover" data-alt="Detailed close-up of the clean stainless steel interior drum of a washing machine with sparkling reflections of light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyDMHgAG4EYhDZCqkOH2MpxX8AAmuCs02PCMAw-sJ3u30PRMbcuDjk_v9t3s728Z0x0VeBDuY6HktgkCKwwArX9JseFxBL2epvnbwzsOy8DppWgEtG_4YLE6wdUnDkHzJL6ZYUFXqoty7gIH_Wzk4_r8EMGCvXUsg_zdyrxTvo8vh2MjA-WhvvPlYKPoYRX74mgn7sjZxT6jN_34yf3xzLkEECLe_BoZDrl0B0bpy34MsaHOgXCjy4xgmypn1qmN_y5wfJll6FM9E"/>
+</div>
+</div>
+<!-- Pagination Indicator -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Floating Badge -->
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                RENOVADA
+            </div>
+</section>
+<!-- Product Identity -->
+<section class="px-6 py-8 space-y-4">
+<div class="space-y-1">
+<h2 class="text-3xl font-black tracking-tight leading-tight">Brastemp 11kg</h2>
+<div class="flex items-center gap-2 text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-sm uppercase tracking-wider">Pristine Certified Utility</span>
+</div>
+</div>
+<!-- Pricing Block -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-lg text-xs font-bold w-fit mb-4">
+                    VOCÊ ECONOMIZA R$ 1250
+                </div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-sm line-through">R$ 1.899</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-error">R$ 649</span>
+<span class="text-on-surface-variant font-medium">no PIX</span>
+</div>
+<p class="text-on-surface font-medium mt-2">12x de <span class="text-lg font-bold text-on-surface">R$ 62</span></p>
+</div>
+</div>
+</section>
+<!-- Key Specs Grid -->
+<section class="px-6 mb-12">
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container p-4 rounded-2xl flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="weight">weight</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Capacidade</span>
+<span class="font-bold">11kg</span>
+</div>
+<div class="bg-surface-container p-4 rounded-2xl flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="bolt">bolt</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Voltagem</span>
+<span class="font-bold">220V</span>
+</div>
+<div class="bg-surface-container p-4 rounded-2xl flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="palette">palette</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Cor</span>
+<span class="font-bold">Branca</span>
+</div>
+</div>
+</section>
+<!-- Transparency Section: What was done -->
+<section class="bg-surface-container-low px-6 py-12">
+<div class="max-w-md mx-auto space-y-8">
+<div class="flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="text-2xl font-black tracking-tight">O que foi renovado?</h3>
+<p class="text-on-surface-variant text-sm">Transparência total sobre cada componente.</p>
+</div>
+<div class="space-y-3">
+<div class="bg-white p-5 rounded-2xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Timer Central</p>
+<p class="text-xs text-on-surface-variant">Componente Novo Original</p>
+</div>
+</div>
+<span class="text-primary text-xs font-black">SUBSTITUÍDO</span>
+</div>
+<div class="bg-white p-5 rounded-2xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Mangueiras</p>
+<p class="text-xs text-on-surface-variant">Entrada e Saída Premium</p>
+</div>
+</div>
+<span class="text-primary text-xs font-black">SUBSTITUÍDO</span>
+</div>
+<div class="bg-white p-5 rounded-2xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Garantia Total</p>
+<p class="text-xs text-on-surface-variant">Segurança absoluta</p>
+</div>
+</div>
+<span class="text-secondary text-xs font-black">6 MESES</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Shipping & Payment -->
+<section class="px-6 py-12 space-y-8">
+<div class="space-y-4">
+<h4 class="text-xl font-black tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+                    Entrega e Frete
+                </h4>
+<div class="bg-surface-container p-6 rounded-3xl border border-primary/20">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-bold text-primary">Frete Grátis para SP</p>
+<p class="text-sm text-on-surface-variant">Entrega em até 3 dias úteis</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="text-xl font-black tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                    Pagamento Seguro
+                </h4>
+<div class="flex flex-wrap gap-3">
+<div class="bg-surface-container px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="pix">photos</span> PIX
+                    </div>
+<div class="bg-surface-container px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="credit_card">credit_card</span> Cartão
+                    </div>
+<div class="bg-surface-container px-4 py-2 rounded-xl text-sm font-medium text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="handshake">handshake</span> Pagamento na Entrega
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-lg px-6 py-4 flex flex-col gap-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] z-50 rounded-t-3xl">
+<button class="w-full h-14 bg-tertiary-container text-white font-black text-lg rounded-2xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+            COMPRAR AGORA
+        </button>
+<button class="w-full h-14 bg-primary text-white font-black text-lg rounded-2xl flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+            COMPRAR PELO ZAPP
+        </button>
+</div>
+</body></html>

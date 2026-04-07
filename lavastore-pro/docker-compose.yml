@@ -1,0 +1,109 @@
+version: '3.9'
+
+services:
+  # ────────── BANCO DE DADOS ──────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: lavastore-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-lavastore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-lavastore_dev_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-lavastore_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-lavastore}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ────────── REDIS ──────────
+  redis:
+    image: redis:7-alpine
+    container_name: lavastore-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-redis_dev_pass}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--no-auth-warning", "-a", "${REDIS_PASSWORD:-redis_dev_pass}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ────────── ADMINER (DB GUI) ──────────
+  adminer:
+    image: adminer:latest
+    container_name: lavastore-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+  # ────────── API (Fastify) ──────────
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: ../../infrastructure/docker/Dockerfile.api
+      target: development
+    container_name: lavastore-api
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://${POSTGRES_USER:-lavastore}:${POSTGRES_PASSWORD:-lavastore_dev_pass}@postgres:5432/${POSTGRES_DB:-lavastore_db}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-redis_dev_pass}@redis:6379
+      API_PORT: 3001
+      API_HOST: 0.0.0.0
+      ALLOWED_ORIGINS: "http://localhost:3000"
+    volumes:
+      - ./apps/api:/app
+      - /app/node_modules
+      - ./apps/api/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env.local
+
+  # ────────── WEB (Next.js) ──────────
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: ../../infrastructure/docker/Dockerfile.web
+      target: development
+    container_name: lavastore-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - api
+    env_file:
+      - .env.local
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: lavastore-network
