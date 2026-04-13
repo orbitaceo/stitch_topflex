@@ -10,6 +10,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "prisma/seeds/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

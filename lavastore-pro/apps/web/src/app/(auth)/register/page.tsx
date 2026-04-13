@@ -103,10 +103,11 @@ export default function RegisterPage() {
         password: data.password,
         firstName: data.firstName,
         lastName: data.lastName,
-        phone: data.phone || undefined,
+        ...(data.phone ? { phone: data.phone } : {}),
       });
       router.push('/login?registered=1');
-    } catch (err: any) {
+    } catch (_err) {
+      const err = _err as any;
       const msg = err?.response?.data?.message ?? 'Erro ao criar conta. Tente novamente.';
       setServerError(msg);
     }

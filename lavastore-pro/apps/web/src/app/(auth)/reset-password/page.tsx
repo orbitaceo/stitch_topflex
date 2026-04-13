@@ -96,7 +96,8 @@ function ResetPasswordForm() {
     try {
       await authApi.resetPassword(token, data.password);
       setSuccess(true);
-    } catch (err: any) {
+    } catch (_err) {
+      const err = _err as any;
       const msg = err?.response?.data?.message ?? 'Erro ao redefinir senha. O link pode ter expirado.';
       setServerError(msg);
     }

@@ -15,6 +15,9 @@ declare module 'fastify' {
   interface FastifyRequest {
     user?: JwtPayload;
   }
+  interface FastifyInstance {
+    authenticate: (request: FastifyRequest, reply: any) => Promise<void>;
+  }
 }
 
 const authPlugin: FastifyPluginAsync = fp(async (fastify) => {

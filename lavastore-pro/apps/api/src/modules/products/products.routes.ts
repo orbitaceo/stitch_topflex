@@ -1,5 +1,5 @@
 import { FastifyPluginAsync, FastifyRequest, FastifyReply } from 'fastify';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma, Voltage } from '@prisma/client';
 
 const productsRoutes: FastifyPluginAsync = async (fastify) => {
   const prisma = fastify.prisma as PrismaClient;
@@ -23,13 +23,13 @@ const productsRoutes: FastifyPluginAsync = async (fastify) => {
       },
     },
     async (req: FastifyRequest, reply: FastifyReply) => {
-      const { brand, voltage, sort, limit = 20, page = 1 } = req.query as any;
+      const { brand, voltage, sort, limit = 20, page = 1 } = req.query as { brand?: string; voltage?: string; sort?: string; limit?: number; page?: number };
 
-      const where: any = {};
+      const where: Prisma.ProductWhereInput = {};
       if (brand && brand !== 'Todas') where.brand = brand;
-      if (voltage && voltage !== 'Todas') where.voltage = voltage.replace('V110', 'V110').replace('V220', 'V220');
+      if (voltage && voltage !== 'Todas') where.voltage = voltage.replace('V110', 'V110').replace('V220', 'V220') as Voltage;
 
-      let orderBy: any = { createdAt: 'desc' };
+      let orderBy: Prisma.ProductOrderByWithRelationInput = { createdAt: 'desc' };
       if (sort === 'price_asc') orderBy = { salePrice: 'asc' };
       if (sort === 'price_desc') orderBy = { salePrice: 'desc' };
 

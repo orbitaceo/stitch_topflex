@@ -70,7 +70,8 @@ export default function CheckoutPage() {
         throw new Error('Link de pagamento não retornado.');
       }
 
-    } catch (err: any) {
+    } catch (_err) {
+      const err = _err as any;
       setServerError(err.response?.data?.message || 'Erro ao processar o checkout. Tente novamente.');
       setIsSubmitting(false);
     }

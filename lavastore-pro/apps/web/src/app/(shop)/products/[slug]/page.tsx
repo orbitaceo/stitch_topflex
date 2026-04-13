@@ -40,7 +40,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         setLoading(true);
         const data = await productsApi.get(params.slug);
         if (isMounted) setProduct(data);
-      } catch (err: any) {
+      } catch (_err) {
+        const err = _err as any;
         if (err.response?.status === 404) {
           if (isMounted) notFound();
         }
@@ -188,6 +189,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       price: product.salePrice,
                       quantity: 1,
                       imageUrl: images[0],
+                      slug: product.slug,
+                      voltage: product.voltage as "V110" | "V220" | "BIVOLT",
+                      warrantyMonths: product.warrantyMonths,
                     });
                   }}
                   disabled={isOutOfStock}

@@ -71,7 +71,7 @@ export class AuthService {
           create: {
             firstName: input.firstName,
             lastName: input.lastName,
-            phone: input.phone,
+            phone: input.phone ?? null,
           },
         },
       },
@@ -126,8 +126,8 @@ export class AuthService {
         data: {
           action: 'user.login.failed',
           resource: 'User',
-          ipAddress,
-          userAgent,
+          ipAddress: ipAddress ?? null,
+          userAgent: userAgent ?? null,
           newData: { email: input.email },
         },
       });
@@ -151,8 +151,8 @@ export class AuthService {
         token: hashedRefreshToken,
         userId: user.id,
         expiresAt: refreshTokenExpiresAt(),
-        ipAddress,
-        userAgent,
+        ipAddress: ipAddress ?? null,
+        userAgent: userAgent ?? null,
       },
     });
 
@@ -162,8 +162,8 @@ export class AuthService {
         action: 'user.login',
         resource: 'User',
         resourceId: user.id,
-        ipAddress,
-        userAgent,
+        ipAddress: ipAddress ?? null,
+        userAgent: userAgent ?? null,
       },
     });
 
@@ -221,8 +221,8 @@ export class AuthService {
         token: newHashed,
         userId: stored.user.id,
         expiresAt: refreshTokenExpiresAt(),
-        ipAddress,
-        userAgent,
+        ipAddress: ipAddress ?? null,
+        userAgent: userAgent ?? null,
       },
     });
 

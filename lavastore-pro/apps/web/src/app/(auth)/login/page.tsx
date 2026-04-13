@@ -37,7 +37,8 @@ export default function LoginPage() {
       setAuth(result.user, result.accessToken);
       const redirectTo = searchParams.get('redirect') || '/';
       router.push(redirectTo);
-    } catch (err: any) {
+    } catch (_err) {
+      const err = _err as any;
       const msg = err?.response?.data?.message ?? 'Erro ao fazer login. Tente novamente.';
       setServerError(msg);
     }

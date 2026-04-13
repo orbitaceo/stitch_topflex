@@ -19,6 +19,7 @@ interface Product {
   stock: number;
   brand: string;
   voltage: string;
+  warrantyMonths: number;
   isFeatured: boolean;
 }
 
@@ -47,7 +48,8 @@ export default function CatalogPage() {
 
         const data = await productsApi.list(params);
         if (isMounted) setProducts(data.items || data || []);
-      } catch (err: any) {
+      } catch (_err) {
+        const err = _err as any;
         if (isMounted) setError(err.message || 'Erro ao carregar produtos');
       } finally {
         if (isMounted) setLoading(false);
@@ -236,6 +238,9 @@ export default function CatalogPage() {
                                 price: product.salePrice,
                                 quantity: 1,
                                 imageUrl: `https://placehold.co/400x400/eeeeee/666666?text=${product.brand}`,
+                                slug: product.slug,
+                                voltage: product.voltage as "V110" | "V220" | "BIVOLT",
+                                warrantyMonths: product.warrantyMonths,
                               });
                             }}
                             disabled={isOutOfStock}

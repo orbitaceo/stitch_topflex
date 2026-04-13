@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { JwtPayload } from '../plugins/auth.plugin.js';
+import { JwtPayload } from '../../plugins/auth.plugin.js';
 
 type Role = 'CUSTOMER' | 'ADMIN' | 'SUPER_ADMIN';
 

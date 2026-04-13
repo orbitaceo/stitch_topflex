@@ -10,7 +10,7 @@ export class OrderService {
 
   constructor(
     private readonly prisma: PrismaClient,
-    private readonly log: FastifyBaseLogger,
+    log: FastifyBaseLogger,
   ) {
     this.mpService = new MercadoPagoService(log);
   }
@@ -60,7 +60,7 @@ export class OrderService {
     const orderNumber = `LAVA-${Date.now().toString().slice(-6)}-${Math.floor(Math.random() * 1000)}`;
 
     // 3. Criar Pedido (Transação no banco para reduzir o estoque instantaneamente)
-    const order = await this.prisma.$transaction(async (tx: any) => {
+    const order = await this.prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const newOrder = await tx.order.create({
         data: {
           orderNumber,
@@ -70,7 +70,7 @@ export class OrderService {
           shippingCost,
           discount,
           total,
-          shippingAddress: input.shippingAddress as any,
+          shippingAddress: input.shippingAddress as Prisma.JsonObject,
           items: {
             create: orderItemsConfig.map(i => ({
               productId: i.productId,
