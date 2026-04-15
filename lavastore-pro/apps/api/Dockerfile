@@ -17,6 +17,9 @@ COPY packages/shared-types/package.json ./packages/shared-types/
 # Instalar dependências
 RUN pnpm install --frozen-lockfile
 
+# Copiar tsconfig base do monorepo (necessário para o extends do apps/api/tsconfig.json)
+COPY tsconfig.base.json ./
+
 # Copiar todo o código fonte da API e dos pacotes
 COPY apps/api ./apps/api
 COPY packages ./packages
