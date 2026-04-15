@@ -14,6 +14,9 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/api/package.json ./apps/api/
 COPY packages/shared-types/package.json ./packages/shared-types/
 
+# Copiar o schema do prisma ANTES do pnpm install, pois o package.json raiz faz referência a ele
+COPY apps/api/prisma ./apps/api/prisma
+
 # Instalar dependências (ignorando postinstall do Prisma)
 ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
 RUN pnpm install --frozen-lockfile
