@@ -14,7 +14,8 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/api/package.json ./apps/api/
 COPY packages/shared-types/package.json ./packages/shared-types/
 
-# Instalar dependências
+# Instalar dependências (ignorando postinstall do Prisma)
+ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
 RUN pnpm install --frozen-lockfile
 
 # Copiar tsconfig base do monorepo (necessário para o extends do apps/api/tsconfig.json)
@@ -48,7 +49,8 @@ COPY --from=builder /app/apps/api/dist ./apps/api/dist
 COPY --from=builder /app/apps/api/prisma ./apps/api/prisma
 COPY --from=builder /app/packages ./packages
 
-# Instalar APENAS as dependências de produção para salvar espaço
+# Instalar APENAS as dependências de produção para salvar espaço (ignorando postinstall do Prisma)
+ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
 RUN pnpm install --prod --frozen-lockfile
 
 # Gerar Prisma client novamente para garantir os binários do alpine
