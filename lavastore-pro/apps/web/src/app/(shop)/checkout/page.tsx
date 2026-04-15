@@ -29,7 +29,7 @@ export default function CheckoutPage() {
   const [serverError, setServerError] = useState<string | null>(null);
 
   const { user } = useAuthStore();
-  const { items, totalPrice, clearCart } = useCartStore();
+  const { items, totalPrice, clearCart: _clearCart } = useCartStore();
 
   const { register, handleSubmit, formState: { errors } } = useForm<AddressFormData>({
     resolver: zodResolver(addressSchema),

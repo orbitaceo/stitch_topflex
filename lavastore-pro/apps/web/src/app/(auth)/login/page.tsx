@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -15,7 +15,7 @@ const schema = z.object({
 });
 type FormData = z.infer<typeof schema>;
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isExpired = searchParams.get('expired') === '1';
@@ -54,7 +54,6 @@ export default function LoginPage() {
         </Link>
       </p>
 
-      {/* Alerta de sessão expirada */}
       {isExpired && (
         <div className="bg-error-container text-on-error-container rounded-2xl p-4 mb-6 flex items-center gap-3">
           <span className="material-symbols-outlined text-error" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -64,7 +63,6 @@ export default function LoginPage() {
         </div>
       )}
 
-      {/* Erro do servidor */}
       {serverError && (
         <div className="bg-error-container text-on-error-container rounded-2xl p-4 mb-6 flex items-center gap-3">
           <span className="material-symbols-outlined text-error" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -75,7 +73,6 @@ export default function LoginPage() {
       )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-        {/* E-mail */}
         <div>
           <label htmlFor="login-email" className="block text-sm font-semibold text-on-surface mb-2">
             E-mail
@@ -101,7 +98,6 @@ export default function LoginPage() {
           )}
         </div>
 
-        {/* Senha */}
         <div>
           <div className="flex justify-between mb-2">
             <label htmlFor="login-password" className="text-sm font-semibold text-on-surface">
@@ -142,7 +138,6 @@ export default function LoginPage() {
           )}
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
           id="login-submit"
@@ -163,14 +158,12 @@ export default function LoginPage() {
         </button>
       </form>
 
-      {/* Divider */}
       <div className="flex items-center gap-4 my-8">
         <div className="flex-1 h-px bg-surface-container-highest" />
         <span className="text-on-surface-variant text-sm font-medium">ou continue com</span>
         <div className="flex-1 h-px bg-surface-container-highest" />
       </div>
 
-      {/* WhatsApp auth (alternativa) */}
       <a
         href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'}?text=Olá! Gostaria de criar uma conta no LavaJá.`}
         target="_blank"
@@ -183,5 +176,13 @@ export default function LoginPage() {
         Falar via WhatsApp
       </a>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="animate-pulse h-64 bg-surface-container rounded-2xl" />}>
+      <LoginForm />
+    </Suspense>
   );
 }

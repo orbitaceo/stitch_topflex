@@ -40,7 +40,7 @@ api.interceptors.response.use(
     ) {
       if (isRefreshing) {
         // Enfileirar enquanto já estamos renovando
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
           refreshQueue.push((token) => {
             original.headers.Authorization = `Bearer ${token}`;
             resolve(api(original));

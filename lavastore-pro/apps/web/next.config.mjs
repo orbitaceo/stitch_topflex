@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Standalone output para Docker
-  output: 'standalone',
 
   // Security headers
   async headers() {

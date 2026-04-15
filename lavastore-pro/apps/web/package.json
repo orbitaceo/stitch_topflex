@@ -12,6 +12,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@lavastore/shared-types": "workspace:*",
     "@tanstack/react-query": "^5.50.0",
     "@tanstack/react-query-devtools": "^5.50.0",
     "axios": "^1.7.0",
@@ -24,9 +26,8 @@
     "react-dom": "^18.3.0",
     "react-hook-form": "^7.52.0",
     "tailwind-merge": "^2.4.0",
-    "zustand": "^4.5.0",
     "zod": "^3.23.0",
-    "@hookform/resolvers": "^3.9.0"
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.45.0",

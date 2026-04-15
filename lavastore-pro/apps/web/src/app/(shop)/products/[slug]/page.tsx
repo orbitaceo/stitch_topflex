@@ -93,7 +93,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <section className="relative w-full aspect-square md:aspect-video lg:h-[70vh] bg-surface-container overflow-hidden group">
         <div className="absolute inset-0 transition-transform duration-500 ease-in-out w-full h-full">
           <Image 
-            src={images[activeImage]} 
+            src={images[activeImage] ?? images[0]!} 
             alt={product.name}
             fill
             className="object-contain object-center"
@@ -188,7 +188,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                       name: product.name,
                       price: product.salePrice,
                       quantity: 1,
-                      imageUrl: images[0],
+                      imageUrl: images[0] ?? `https://placehold.co/800x800/eeeeee/666666?text=${product.brand}`,
                       slug: product.slug,
                       voltage: product.voltage as "V110" | "V220" | "BIVOLT",
                       warrantyMonths: product.warrantyMonths,
