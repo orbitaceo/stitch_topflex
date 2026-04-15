@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd lavastore-pro && pnpm install --frozen-lockfile && pnpm --filter @lavastore/web run build",
+  "outputDirectory": "lavastore-pro/apps/web/.next",
+  "installCommand": "cd lavastore-pro && pnpm install --frozen-lockfile",
+  "framework": "nextjs",
+  "regions": ["gru1"]
+}

@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: lavastore-api
+    runtime: docker
+    dockerfilePath: ./apps/api/Dockerfile
+    dockerContext: .
+    rootDir: lavastore-pro
+    region: oregon
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_PRIVATE_KEY
+        sync: false
+      - key: JWT_PUBLIC_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: MERCADOPAGO_ACCESS_TOKEN
+        sync: false
