@@ -51,7 +51,7 @@ COPY --from=builder /app/packages ./packages
 
 # Instalar APENAS as dependências de produção para salvar espaço (ignorando postinstall do Prisma)
 ENV PRISMA_SKIP_POSTINSTALL_GENERATE=true
-RUN pnpm install --prod --frozen-lockfile
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts
 
 # Gerar Prisma client novamente para garantir os binários do alpine
 WORKDIR /app/apps/api
