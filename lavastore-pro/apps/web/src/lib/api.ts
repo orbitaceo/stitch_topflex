@@ -3,6 +3,9 @@ import { useAuthStore } from '@/stores/authStore';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 
+// Timeout generoso para cobrir cold starts do Render Free (pode levar até ~60s)
+const REQUEST_TIMEOUT_MS = 65_000;
+
 export const api = axios.create({
   baseURL: API_URL,
   withCredentials: true, // envia cookies (refreshToken HttpOnly)
@@ -11,7 +14,7 @@ export const api = axios.create({
     'Accept': 'application/json',
     'X-Request-Source': 'lavastore-web',
   },
-  timeout: 15000,
+  timeout: REQUEST_TIMEOUT_MS,
 });
 
 // ── Request interceptor: injecta o access token ────────────────────
@@ -22,6 +25,26 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+// ── Retry interceptor: tenta novamente em caso de timeout (cold start) ─
+// O Render Free pode demorar até ~60s para responder após dormência.
+// Com uma única tentativa extra cobre a maioria dos cold starts.
+api.interceptors.response.use(
+  (response) => response,
+  async (error: AxiosError) => {
+    const config = error.config as (typeof error.config & { _retried?: boolean }) | undefined;
+    const isTimeout = error.code === 'ECONNABORTED' || error.message?.includes('timeout');
+
+    if (isTimeout && config && !config._retried) {
+      config._retried = true;
+      // Aguarda 2s antes de tentar novamente
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return api(config);
+    }
+
+    return Promise.reject(error);
+  },
+);
 
 // ── Response interceptor: lazy refresh (silent refresh) ───────────
 let isRefreshing = false;

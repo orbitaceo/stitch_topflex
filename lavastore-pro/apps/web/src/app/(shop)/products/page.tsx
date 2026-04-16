@@ -26,6 +26,7 @@ interface Product {
 export default function CatalogPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [warmingUp, setWarmingUp] = useState(false); // cold start do servidor
   const [error, setError] = useState<string | null>(null);
 
   // Filtros
@@ -37,26 +38,49 @@ export default function CatalogPage() {
 
   useEffect(() => {
     let isMounted = true;
+
+    // Detecta cold start: se ainda estiver carregando após 5s, avisa o usuário
+    const warmUpTimer = setTimeout(() => {
+      if (isMounted) setWarmingUp(true);
+    }, 5000);
+
     const fetchProducts = async () => {
       try {
         setLoading(true);
+        setError(null);
+        setWarmingUp(false);
         // Construir os params dinamicamente
-        const params: any = {};
+        const params: Record<string, string | number> = {};
         if (selectedBrand !== 'Todas') params.brand = selectedBrand;
         if (selectedVoltage !== 'Todas') params.voltage = selectedVoltage;
         params.sort = sortOption;
 
         const data = await productsApi.list(params);
-        if (isMounted) setProducts(data.items || data || []);
+        if (isMounted) {
+          setProducts(data.items || data || []);
+          setWarmingUp(false);
+        }
       } catch (_err) {
-        const err = _err as any;
-        if (isMounted) setError(err.message || 'Erro ao carregar produtos');
+        const err = _err as Error & { code?: string };
+        if (isMounted) {
+          const isTimeout = err.code === 'ECONNABORTED' || err.message?.includes('timeout');
+          setError(
+            isTimeout
+              ? 'O servidor demorou muito para responder. Por favor, tente novamente.'
+              : (err.message || 'Erro ao carregar produtos'),
+          );
+          setWarmingUp(false);
+        }
       } finally {
+        clearTimeout(warmUpTimer);
         if (isMounted) setLoading(false);
       }
     };
     fetchProducts();
-    return () => { isMounted = false; };
+    return () => {
+      isMounted = false;
+      clearTimeout(warmUpTimer);
+    };
   }, [selectedBrand, selectedVoltage, sortOption]);
 
   const brands = ['Todas', 'Brastemp', 'Samsung', 'LG', 'Electrolux', 'Consul', 'Midea'];
@@ -123,6 +147,11 @@ export default function CatalogPage() {
             <h1 className="text-2xl font-bold text-on-surface">
               {loading ? 'Carregando...' : `${products.length} produtos encontrados`}
             </h1>
+            {loading && warmingUp && (
+              <p className="text-xs text-on-surface-variant animate-pulse mt-1">
+                ⚡ Servidor iniciando, aguarde um momento…
+              </p>
+            )}
             
             <div className="flex items-center gap-3">
               <span className="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Ordenar por</span>
@@ -139,10 +168,25 @@ export default function CatalogPage() {
             </div>
           </div>
 
-          {/* Grid */}
+          {/* Banner de erro */}
           {error && (
-            <div className="p-4 bg-error-container text-on-error-container rounded-2xl animate-fade-in">
-              {error}
+            <div className="p-6 bg-error-container text-on-error-container rounded-2xl animate-fade-in flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <span className="material-symbols-outlined text-2xl flex-shrink-0">wifi_off</span>
+              <div className="flex-1">
+                <p className="font-bold text-sm mb-1">Falha ao carregar produtos</p>
+                <p className="text-sm opacity-80">{error}</p>
+              </div>
+              <button
+                onClick={() => {
+                  setError(null);
+                  setSelectedBrand('Todas');
+                  setSelectedVoltage('Todas');
+                }}
+                className="flex-shrink-0 flex items-center gap-2 bg-error text-on-error font-bold text-sm px-4 py-2 rounded-xl hover:opacity-90 transition-opacity"
+              >
+                <span className="material-symbols-outlined text-base">refresh</span>
+                Tentar Novamente
+              </button>
             </div>
           )}
 
